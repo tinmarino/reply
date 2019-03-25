@@ -176,6 +176,7 @@ sub _load_config {
     }
 
     if (defined(my $file = $root_config->{script_file})) {
+        $file =~ s/^~/$ENV{HOME}/;
         my $contents = do {
             open my $fh, '<', $file or die "Couldn't open $file: $!";
             local $/ = undef;
